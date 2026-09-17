@@ -1,0 +1,205 @@
+<div id="ripple-app-map">
+  <h2>Ripple, XRPL &amp; XRP application ecosystem</h2>
+  <div class="text-small text-muted">Public evidence reviewed 17 September 2026 · Select a name for its connection, status and source</div>
+  <div class="card" id="ripple-selection" aria-live="polite"></div>
+  <div id="ripple-lanes"></div>
+  <div class="text-small" id="ripple-legend">● Product / integration reported available &nbsp; ◇ Announced / pilot &nbsp; ○ Ecosystem-listed; deployment unverified &nbsp; × Legacy / deprecated</div>
+</div>
+<style>
+#ripple-app-map { color:var(--foreground); }
+#ripple-app-map #ripple-selection { margin:16px 0; }
+#ripple-app-map .lane { display:grid; grid-template-columns:170px minmax(0,1fr); gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+#ripple-app-map .lane-title { font-weight:500; }
+#ripple-app-map .lane-sub { margin-top:4px; }
+#ripple-app-map .names { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; align-content:start; }
+#ripple-app-map .detail-line { margin-top:5px; }
+#ripple-app-map #ripple-legend { margin-top:14px; }
+@media(max-width:580px) { #ripple-app-map .lane { grid-template-columns:1fr; gap:8px; } }
+@media(max-width:380px) { #ripple-app-map .names { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+</style>
+<script>
+(() => {
+const root=document.getElementById('ripple-app-map');
+const S={
+ondo:'https://ripple.com/insights/tokenized-treasuries-go-live-on-the-xrpl/',
+archax:'https://ripple.com/ripple-press/archax-provides-access-to-abrdn-money-market-fund-on-the-xrp-ledger-in-collaboration-with-ripple/',
+openeden:'https://openeden.com/news/ripple-invest-10-million-dollars-openeden-tokenized-us-treasury-bills-xrp-ledger/',
+guggenheim:'https://ripple.com/insights/apex-2025-a-turning-point-for-institutional-adoption-on-the-xrp-ledger/',
+vert:'https://ripple.com/insights/vert-expands-tokenized-operations-on-xrpl/',
+ctrl:'https://ripple.com/ripple-press/ripple-expands-global-custody-footprint-into-middle-east-with-ctrl-alt/',
+dbs:'https://ripple.com/lp/tokenized-liquidity-orchestration/',
+dbsplan:'https://ripple.com/ripple-press/dbs-franklin-templeton-to-launch-trading-and-lending-solutions-tokenised-mmf-ripple-stablecoin-rlusd/',
+zilo:'https://ripple.com/ripple-press/ripple-strengthens-digital-capital-markets-infrastructure-with-investments-in-zilo-and-licuido/',
+mb:'https://ripple.com/ripple-press/mercado-bitcoin-expands-global-access-by-tokenizing-200m-in-regulated-financial-assets-on-the-xrp-ledger/',
+unloq:'https://ripple.com/ripple-press/ripple-joins-monetary-authority-of-singapore-s-bloom-initiative-and-partners-with-unloq-to-advance-programmable-settlement-infrastructure-in-trade-finance/',
+rlusd:'https://docs.ripple.com/products/stablecoin/overview/rlusd',
+circle:'https://www.circle.com/blog/now-available-usdc-on-the-xrpl',
+euro:'https://ripple.com/ripple-press/euro-stablecoin-on-xrp-ledger/',
+braza:'https://ripple.com/ripple-press/braza-group-announces-launch-of-bbrl-stablecoin-on-the-xrp-ledger/',
+usdb:'https://ripple.com/ripple-press/usdb-stablecoin-on-xrp-ledger/',
+evm:'https://www.xrplevm.org/blog/xrpl-evm-is-live',
+evmdoc:'https://docs.xrplevm.org/pages/users/introduction/what-is-the-xrplevm',
+evmlaunch:'https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/',
+doppler:'https://docs.doppler.finance/product/doppler-vaults/xrp-vault',
+dopplerrwa:'https://openeden.com/news/openeden-doppler-partner-to-expand-institutional-rwa-yield-xrpl/',
+dopplersbi:'https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization',
+aave:'https://aave.com/blog/stablecoin-infrastructure',
+horizon:'https://aave.com/blog/horizon-launch',
+curve:'https://governance.aave.com/t/arfc-add-rlusd-to-core-instance/20214',
+securitize:'https://ripple.com/ripple-press/ripple-and-securitize-enable-rlusd-smart-sontract-functionality-for-blackrock-buidl-and-vaneck-vbill-tokenized-funds/',
+prime:'https://ripple.com/ripple-press/ripple-announces-support-for-hyperliquid-expanding-institutional-access-to-onchain-liquidity/',
+payments:'https://ripple.com/ripple-press/ripple-integrates-rlusd-into-ripple-payments-driving-enterprise-demand-and-utility/',
+tranglo:'https://ripple.com/customer-case-study/tranglo/',
+africa:'https://ripple.com/ripple-press/ripples-usd-backed-stablecoin-rlusd-arrives-in-Africa/',
+turkey:'https://ripple.com/ripple-press/new-partnerships-bring-rlusd-to-turkiye/',
+japan:'https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/',
+custody:'https://ripple.com/ripple-press/ripple-brings-bank-grade-custody-solution-to-crypto-businesses/',
+custody2026:'https://ripple.com/insights/ripple-custody-is-the-foundation-of-institutional-digital-asset-adoption/',
+palisade:'https://ripple.com/ripple-press/ripple-acquires-palisade-to-offer-comprehensive-digital-asset-custody-solution/',
+treasury:'https://treasury.ripple.com/gtreasury-is-now-ripple-treasury',
+flare:'https://flare.network/news/fassets-fxrp-is-live-on-mainnet',
+firelight:'https://flare.network/news/firelight-launch',
+morpho:'https://flare.network/news/first-ever-modular-lending-for-xrp-debuts-on-flare-via-morpho-and-mystic',
+chainlink:'https://ripple.com/ripple-press/ripple-adopts-the-chainlink-standard-to-further-rippleusd-utility-and-access-in-defi/',
+native:'https://xrpl.org/docs/use-cases/tokenization/stablecoin-issuer',
+lending:'https://ripple.com/insights/the-xrpl-lending-protocol-bringing-credit-infrastructure-onchain/'
+};
+// name, status, connection, role / qualification, evidence link
+const groups=[
+['XRPL trading & liquidity','Native XRPL applications',[
+['XPMarket','live','XRPL → native DEX / AMM','Trading terminal, swaps, liquidity pools, token launches and NFT tools. Uses the ledger’s shared exchange infrastructure.','https://xpmarket.com/'],
+['Magnetic','live','XRPL → native DEX / AMM','DEX interface, swaps, AMM, farming and token-launch tools; also supports Xahau.','https://xmagnetic.org/WhitePaper.pdf'],
+['First Ledger','live','XRPL → native DEX','Token trading and launch platform.','https://firstledger.net/'],
+['ANODEX','live','Anodos → XRPL DEX / AMM','Trading, liquidity management and on/off-ramp interface. Anodos lists ANODEX as live; its separate neobank remains marked soon.','https://apps.anodos.finance/'],
+['XRPL.to','live','XRPL → native DEX / AMM','Trading, routing, portfolio and token analytics interface.','https://xrpl.to/insights/xrpl-ecosystem-guide'],
+['Sologenic / TX','legacy','Sologenic → XRPL; transition to TX','Established XRPL DEX / AMM tooling. Current site says the ecosystem is now part of TX; treat as a transition rather than an unchanged standalone platform.','https://sologenic.org/?network=mainnet'],
+['Orchestra','legacy','XRPL → AMM interface','Historical AMM application. Its own documentation now explicitly marks Orchestra deprecated.','https://docs.orchestra.finance/about/overview/']
+]],
+['Institutional assets','XRPL funds, credit & real estate',[
+['Ondo / OUSG','live','Ondo → OUSG on XRPL ↔ RLUSD','Tokenized U.S. Treasuries; qualified investors can mint and redeem with RLUSD. Live launch confirmed June 2025.',S.ondo],
+['Archax / Aberdeen','live','Aberdeen fund → Archax → XRPL','Tokenized money-market fund access through Archax. Archax also uses Ripple Custody. Asset-manager relationship is mediated by Archax.',S.archax],
+['OpenEden / TBILL','live','OpenEden → TBILL on XRPL','Treasury-bill tokens accessible to eligible XRPL users. Do not assume every OpenEden product is deployed on XRPL.',S.openeden],
+['Guggenheim / Zeconomy','live','Zeconomy → DCP on XRPL','Digital commercial paper administered by Guggenheim Treasury Services; Ripple describes the launch in its Apex recap.',S.guggenheim],
+['DBS / Franklin Templeton','live','Franklin fund ↔ RLUSD via DBS','Ripple now describes the tokenized fund / RLUSD trading solution as built. Repo and collateral lending were exploratory in the original MOU; that phase is not confirmed here.',S.dbs],
+['VERT Capital','live','Structured credit → XRPL + EVM sidechain','Brazilian credit platform with completed tokenized issuances. Recording an issuance does not establish liquid secondary trading.',S.vert],
+['Ctrl Alt / Dubai Land Dept.','live','Title deeds → Ctrl Alt → XRPL; Ripple Custody','Tokenized real-estate title deeds are being issued on XRPL under the DLD project; custody is provided through Ripple technology.',S.ctrl],
+['Aviva Investors','announced','Aviva → tokenized funds on XRPL','Fund-tokenization collaboration identified by Ripple; deployment scale and production assets are not established by this source.',S.zilo],
+['ZILO','announced','Transfer agency → XRPL fund infrastructure','Existing partnership and strategic investment announced August 2026. Supplies digital records and transfer-agency capabilities.',S.zilo],
+['Licuido','announced','Issuance / collateral marketplace → XRPL','Existing partnership and strategic investment announced August 2026. Focus on distribution, collateral movement and settlement.',S.zilo],
+['Mercado Bitcoin','announced','RWA issuance → XRPL; also Ripple Payments','Planned $200m+ tokenization programme. Separately confirmed as a Ripple Payments user and RLUSD distributor; planned issuance is not counted as completed.',S.mb],
+['Unloq / SC+','announced','Trade obligations → RLUSD settlement on XRPL','BLOOM pilot with Ripple: shipment-triggered settlement and supply-chain-finance workflows. Pilot announcement, not proof of scaled production.',S.unloq]
+]],
+['Stablecoin issuers','Settlement assets on XRPL',[
+['Ripple / RLUSD','live','Ripple-issued RLUSD → XRPL + other chains','Official docs list XRPL, Ethereum, Base, Ink, Optimism, Unichain and XRPL EVM. RLUSD usage must be attributed by chain.',S.rlusd],
+['Circle / USDC','live','Circle Mint → native USDC on XRPL','Native issuance and Circle API support confirmed. USDC activity benefits XRPL without necessarily using Ripple commercial products.',S.circle],
+['Schuman / EURØP','live','Schuman Financial → EURØP on XRPL','Native euro stablecoin integration announced May 2025.',S.euro],
+['Braza / BBRL & USDB','live','Braza → BRL and USD tokens on XRPL','BBRL and USDB launches announced in 2025. These are separate issuers/products from RLUSD.',S.usdb],
+['AUDC / AUDD','live','AUDC → AUDD on XRPL and other chains','Australian-dollar stablecoin. Issuer profile in Circle’s partner directory identifies native XRPL issuance.','https://partners.circle.com/partner/audc-pty-ltd']
+]],
+['Yield & money markets','XRPL access with distinct execution models',[
+['Doppler Finance','live','XRPL deposits → custody + CeDeFi strategies','XRP vault documentation explicitly describes custodial / centralized yield strategies. XRPL deposits are not proof that yield is generated on XRPL.',S.doppler],
+['Doppler / OpenEden','announced','Doppler ↔ OpenEden USDO / TBILL','February 2026 partnership to connect XRP and RLUSD liquidity to RWA yield. Announcement uses future-tense integration language.',S.dopplerrwa],
+['SBI Ripple Asia / SBI DM','announced','SBI Ripple Asia ↔ Doppler; SBI Digital Markets custody','MOU to explore XRP yield and tokenization. SBI Digital Markets named institutional custodian for the initiative.',S.dopplersbi],
+['Strobe','live','XRPL front end ↔ Axelar ↔ EVM contracts','Money-market application; site reports mainnet launched. Audit describes EVM-sidechain execution. Do not classify it as the native XRPL lending protocol.','https://strobe.finance/'],
+['Native lending protocol','announced','XRPL protocol → future credit applications','XLS-65 / XLS-66 are protocol capabilities, not a company. The cited Ripple article says validator approval is required and devnet testing is available.',S.lending]
+]],
+['EVM application layer','Separate XRPL EVM chain · listed deployments need checking',[
+['Moai Finance','listed','XRPL ecosystem ↔ XRPL EVM','Multi-chain swaps / liquidity app listed in the official EVM ecosystem guide. EVM deployment and current activity not independently audited.',S.evm],
+['Hammy Swap','listed','XRPL EVM → DEX','Swaps and farming; official ecosystem listing, not independently verified current production.',S.evm],
+['Surge DEX','listed','XRPL EVM → concentrated-liquidity DEX','Listed Uniswap-v3-style trading application.',S.evm],
+['Xrise','listed','XRPL EVM → DeFi application','Listed cooperative DeFi project using vote-escrow mechanics.',S.evm],
+['MoreMarkets','listed','XRP ecosystem → yield application','Listed XRP yield platform; precise execution paths and current deployment need product-level validation.',S.evm],
+['Securd','listed','XRPL EVM ecosystem → lending','Listed lending / liquidity-financing project. Not treated as confirmed live based solely on directory inclusion.',S.evm]
+]],
+['RLUSD institutional DeFi','Ethereum / multichain · not native XRPL apps',[
+['Aave V3','live','Ethereum RLUSD → Aave Core','RLUSD lending and borrowing market. Integration confirmed by Aave; activity belongs to Ethereum for chain-level reporting.',S.aave],
+['Aave Horizon','live','Tokenized collateral → RLUSD borrowing','Institutional RWA lending market with RLUSD as a supplied and borrowable stablecoin. Runs on Ethereum.',S.horizon],
+['Curve','live','Ethereum RLUSD → stablecoin pools','RLUSD pool documented in Aave governance. Pool availability does not imply a bilateral Ripple partnership.',S.curve],
+['Securitize / BUIDL','live','BlackRock BUIDL → RLUSD exchange facility','Securitize integration lets eligible BUIDL holders exchange shares to Ripple for RLUSD. This does not establish BUIDL issuance on XRPL.',S.securitize],
+['Securitize / VBILL','announced','VanEck VBILL → RLUSD exchange facility','Same facility announced with support expected shortly after BUIDL; completion not independently established here.',S.securitize],
+['Hyperliquid','live','Ripple Prime → Hyperliquid derivatives','Institutional venue access enabled February 2026. Hyperliquid is an external chain / venue, not an XRPL application.',S.prime]
+]],
+['Payments & distribution','Ripple products / RLUSD · chain varies by flow',[
+['Tranglo','live','Tranglo → Ripple Payments','Cross-border payment customer and payout network; source describes operating usage.',S.tranglo],
+['BKK Forex','live','BKK Forex → Ripple Payments + RLUSD','RLUSD used in cross-border payment flows. Source does not identify the chain for every flow.',S.payments],
+['iSend','live','iSend → Ripple Payments + RLUSD','RLUSD payment and treasury integration confirmed by Ripple.',S.payments],
+['Chipper Cash','live','Chipper Cash → RLUSD distribution','African access / distribution partner. Do not equate availability with measured settlement volume.',S.africa],
+['Yellow Card','live','Yellow Card → RLUSD distribution','African stablecoin access / distribution partner.',S.africa],
+['VALR','live','VALR → RLUSD exchange access','Exchange distribution relationship in Africa.',S.africa],
+['SBI VC Trade','live','SBI VC Trade → RLUSD in Japan','Official launch confirmed June 2026. Chain-specific use should be checked separately.',S.japan],
+['BiLira / Bitexen / Bitlo','live','Turkish platforms → RLUSD access','Three separately named Turkish distribution partners. Grouped here for readability.',S.turkey]
+]],
+['Trading access & ramps','RLUSD listings · not proof of XRPL deployment',[
+['Binance / Bybit / OKX','live','Exchanges → RLUSD markets','Ripple lists all three as RLUSD venues. Supported deposit chains and market availability vary.',S.turkey],
+['Kraken / Gemini','live','Exchanges → RLUSD markets','Named by Ripple as RLUSD distribution venues.',S.africa],
+['Bitstamp / Bullish','live','Exchanges → RLUSD markets','Named RLUSD partners. Listings do not establish an XRPL-native institutional application.',S.payments],
+['Bitso','live','Bitso → RLUSD distribution','Named RLUSD venue; also part of Ripple’s broader payments ecosystem.',S.africa],
+['LMAX Digital','live','Institutional venue → RLUSD','Named institutional trading access partner.',S.payments],
+['Zero Hash','live','Embedded infrastructure → RLUSD','Named access / infrastructure partner in Ripple’s integration announcement.',S.payments],
+['Uphold / CoinMENA','live','Platforms → RLUSD distribution','Named available RLUSD venues. Grouped for readability.',S.africa],
+['Independent Reserve','live','Exchange → RLUSD distribution','Named available RLUSD exchange partner.',S.africa]
+]],
+['Ripple enterprise stack','Commercial platforms · multichain',[
+['Ripple Payments','live','Businesses → Ripple → fiat / digital-asset payouts','Commercial payment platform; RLUSD use confirmed for selected customers.',S.payments],
+['Ripple Custody','live','Institutions → custody software → supported assets','Enterprise custody infrastructure. A custody client is not automatically an XRPL or XRP settlement user.',S.custody],
+['Ripple Treasury','live','Former GTreasury → corporate treasury workflows','Treasury management, cash visibility and payment workflows. Existing corporate customers do not all become confirmed XRPL users.',S.treasury],
+['Ripple Prime','live','Institutional brokerage → external liquidity venues','Institutional prime brokerage; supports Hyperliquid access and cross-margining.',S.prime],
+['Palisade','live','Acquired by Ripple → wallet infrastructure','Wallet-as-a-service capability acquired for payments, fintech and corporate use cases.',S.palisade],
+['Ripple Mint','live','Eligible institutions → RLUSD mint / redeem','Institutional access to issuance and redemption. Standard Custody and other regulated Ripple entities issue/distribute RLUSD.',S.rlusd]
+]],
+['Institutional custody users','Ripple Custody relationships · chain unspecified',[
+['BBVA','live','BBVA → Ripple Custody','Named institutional custody customer. No XRPL transaction flow inferred.',S.custody],
+['DBS Bank','live','DBS → Ripple Custody','Named custody customer; separate tokenized fund collaboration appears above.',S.custody],
+['SG–FORGE','live','Société Générale–FORGE → Ripple Custody','Named custody customer. Do not infer that every issued asset is on XRPL.',S.custody],
+['DZ BANK','live','DZ BANK → Ripple Custody','Named institutional custody user.',S.custody2026],
+['Intesa Sanpaolo','live','Intesa Sanpaolo → Ripple Custody','Named by Ripple among institutions using its custody infrastructure.',S.custody2026],
+['Absa Bank','live','Absa → Ripple Custody','Named tier-one custody customer in Ripple’s Palisade announcement.',S.palisade],
+['RULEMATCH','live','RULEMATCH → Ripple Custody','Institutional trading platform named as a custody customer.',S.custody],
+['Futureverse','live','Futureverse → Ripple Custody','Named custody customer. Included as infrastructure adoption, not institutional DeFi volume.',S.custody],
+['BNY','live','BNY → custody of RLUSD reserves','Reserve custody is an offchain institutional relationship; distinct from using Ripple Custody software.','https://ripple.com/products/stablecoin/']
+]],
+['Access & connectivity','Wallets, bridges and data services',[
+['Xaman','live','Wallet / xApps → XRPL','Self-custody wallet and application access; also supports Xahau.','https://xaman.app/'],
+['Crossmark','live','Browser wallet → XRPL','Wallet, account management and application SDK.','https://crossmark.io/'],
+['GemWallet','live','Browser wallet → XRPL','Wallet and application transaction-signing access.','https://gemwallet.app/'],
+['Axelar / Squid','live','XRPL ↔ XRPL EVM','Axelar powers bridging; Squid provides routing / transfer interface.',S.evmlaunch],
+['Peersyst','live','Peersyst + Ripple → XRPL EVM development','Infrastructure developer for the separate EVM chain, not an institutional demand source.',S.evmdoc],
+['Band Protocol','live','Price feeds → XRPL EVM apps','Oracle infrastructure identified in the EVM mainnet launch.',S.evmlaunch],
+['Chainlink','live','RLUSD price feeds → Ethereum DeFi','Live RLUSD / USD feeds on Ethereum; this specific integration does not prove a native XRPL feed.',S.chainlink],
+['MetaMask / Keplr','live','Wallets → XRPL EVM','Supported wallet interfaces for the EVM sidechain; different from native XRPL wallet support.',S.evm],
+['Grove / Goldsky / Blockscout','live','RPC / indexing / explorer → XRPL EVM','Supporting infrastructure identified by Ripple at mainnet launch.',S.evmlaunch]
+]],
+['Adjacent XRPFi','Flare applications · independent chain',[
+['Flare / FXRP','live','XRP → FAssets → FXRP on Flare','Collateralized XRP representation enabling applications on Flare. Not native XRPL execution or native XRP staking.',S.flare],
+['SparkDEX','live','FXRP → DEX on Flare','Flare identifies FXRP trading pools on SparkDEX.',S.flare],
+['BlazeSwap','live','FXRP → DEX on Flare','Flare identifies FXRP trading pools on BlazeSwap.',S.flare],
+['Enosys','live','FXRP → DEX on Flare','DEX pool availability confirmed. Other credit / stablecoin products require separate status checks.',S.flare],
+['Kinetic','live','FXRP → lending on Flare','FXRP supply and isolated borrowing-market integration documented at launch.',S.flare],
+['Firelight','live','FXRP → stXRP on Flare','Liquid staking application launched December 2025. This is not XRPL consensus staking.',S.firelight],
+['Morpho / Mystic','live','FXRP → modular lending on Flare','Flare reports live modular lending via Morpho and Mystic in February 2026.',S.morpho]
+]]];
+const symbols={live:'●',announced:'◇',listed:'○',legacy:'×'};
+const names={live:'Reported available / operating',announced:'Announced / pilot; full deployment not established',listed:'Official ecosystem listing; deployment unverified',legacy:'Legacy / transition / deprecated'};
+const buttons=[];
+function select(row,button){
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  const box=root.querySelector('#ripple-selection'); box.replaceChildren();
+  const title=document.createElement('div'); title.style.fontWeight='500'; title.textContent=row[0]+' · '+names[row[1]];
+  const relation=document.createElement('div'); relation.className='detail-line'; relation.textContent=row[2];
+  const detail=document.createElement('div'); detail.className='detail-line text-small'; detail.textContent=row[3];
+  const link=document.createElement('a'); link.href=row[4]; link.target='_blank';link.rel='noopener noreferrer';link.textContent='Source: '+new URL(row[4]).hostname;link.className='text-small';
+  box.append(title,relation,detail,link);
+}
+for(const [label,sub,rows] of groups){
+ const lane=document.createElement('section'); lane.className='lane';
+ const heading=document.createElement('div');
+ const title=document.createElement('div');title.className='lane-title';title.textContent=label;
+ const subtitle=document.createElement('div');subtitle.className='lane-sub text-small text-muted';subtitle.textContent=sub;
+ heading.append(title,subtitle);
+ const grid=document.createElement('div');grid.className='names';
+ rows.forEach(row=>{const button=document.createElement('button');button.type='button';button.className='btn viz-tile';button.textContent=symbols[row[1]]+' '+row[0];button.setAttribute('aria-label',row[0]+'. '+names[row[1]]+'. '+row[2]);button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>select(row,button));buttons.push(button);grid.append(button);});
+ lane.append(heading,grid);root.querySelector('#ripple-lanes').append(lane);
+}
+select(groups[1][2][0],buttons[7]);
+})();
+</script>

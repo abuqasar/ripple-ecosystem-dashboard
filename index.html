@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Ripple Application Map</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer" title="Ripple Application Map" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Ripple Application Map&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;ripple-app-map&quot;&gt;
+  &lt;h2&gt;Ripple, XRPL &amp;amp; XRP application ecosystem&lt;/h2&gt;
+  &lt;div class=&quot;text-small text-muted&quot;&gt;Public evidence reviewed 17 September 2026 · Select a name for its connection, status and source&lt;/div&gt;
+  &lt;div class=&quot;card&quot; id=&quot;ripple-selection&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;ripple-lanes&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;text-small&quot; id=&quot;ripple-legend&quot;&gt;● Product / integration reported available &amp;nbsp; ◇ Announced / pilot &amp;nbsp; ○ Ecosystem-listed; deployment unverified &amp;nbsp; × Legacy / deprecated&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+#ripple-app-map { color:var(--foreground); }
+#ripple-app-map #ripple-selection { margin:16px 0; }
+#ripple-app-map .lane { display:grid; grid-template-columns:170px minmax(0,1fr); gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+#ripple-app-map .lane-title { font-weight:500; }
+#ripple-app-map .lane-sub { margin-top:4px; }
+#ripple-app-map .names { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; align-content:start; }
+#ripple-app-map .detail-line { margin-top:5px; }
+#ripple-app-map #ripple-legend { margin-top:14px; }
+@media(max-width:580px) { #ripple-app-map .lane { grid-template-columns:1fr; gap:8px; } }
+@media(max-width:380px) { #ripple-app-map .names { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+&lt;/style&gt;
+&lt;script&gt;
+(() =&gt; {
+const root=document.getElementById(&#x27;ripple-app-map&#x27;);
+const S={
+ondo:&#x27;https://ripple.com/insights/tokenized-treasuries-go-live-on-the-xrpl/&#x27;,
+archax:&#x27;https://ripple.com/ripple-press/archax-provides-access-to-abrdn-money-market-fund-on-the-xrp-ledger-in-collaboration-with-ripple/&#x27;,
+openeden:&#x27;https://openeden.com/news/ripple-invest-10-million-dollars-openeden-tokenized-us-treasury-bills-xrp-ledger/&#x27;,
+guggenheim:&#x27;https://ripple.com/insights/apex-2025-a-turning-point-for-institutional-adoption-on-the-xrp-ledger/&#x27;,
+vert:&#x27;https://ripple.com/insights/vert-expands-tokenized-operations-on-xrpl/&#x27;,
+ctrl:&#x27;https://ripple.com/ripple-press/ripple-expands-global-custody-footprint-into-middle-east-with-ctrl-alt/&#x27;,
+dbs:&#x27;https://ripple.com/lp/tokenized-liquidity-orchestration/&#x27;,
+dbsplan:&#x27;https://ripple.com/ripple-press/dbs-franklin-templeton-to-launch-trading-and-lending-solutions-tokenised-mmf-ripple-stablecoin-rlusd/&#x27;,
+zilo:&#x27;https://ripple.com/ripple-press/ripple-strengthens-digital-capital-markets-infrastructure-with-investments-in-zilo-and-licuido/&#x27;,
+mb:&#x27;https://ripple.com/ripple-press/mercado-bitcoin-expands-global-access-by-tokenizing-200m-in-regulated-financial-assets-on-the-xrp-ledger/&#x27;,
+unloq:&#x27;https://ripple.com/ripple-press/ripple-joins-monetary-authority-of-singapore-s-bloom-initiative-and-partners-with-unloq-to-advance-programmable-settlement-infrastructure-in-trade-finance/&#x27;,
+rlusd:&#x27;https://docs.ripple.com/products/stablecoin/overview/rlusd&#x27;,
+circle:&#x27;https://www.circle.com/blog/now-available-usdc-on-the-xrpl&#x27;,
+euro:&#x27;https://ripple.com/ripple-press/euro-stablecoin-on-xrp-ledger/&#x27;,
+braza:&#x27;https://ripple.com/ripple-press/braza-group-announces-launch-of-bbrl-stablecoin-on-the-xrp-ledger/&#x27;,
+usdb:&#x27;https://ripple.com/ripple-press/usdb-stablecoin-on-xrp-ledger/&#x27;,
+evm:&#x27;https://www.xrplevm.org/blog/xrpl-evm-is-live&#x27;,
+evmdoc:&#x27;https://docs.xrplevm.org/pages/users/introduction/what-is-the-xrplevm&#x27;,
+evmlaunch:&#x27;https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/&#x27;,
+doppler:&#x27;https://docs.doppler.finance/product/doppler-vaults/xrp-vault&#x27;,
+dopplerrwa:&#x27;https://openeden.com/news/openeden-doppler-partner-to-expand-institutional-rwa-yield-xrpl/&#x27;,
+dopplersbi:&#x27;https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization&#x27;,
+aave:&#x27;https://aave.com/blog/stablecoin-infrastructure&#x27;,
+horizon:&#x27;https://aave.com/blog/horizon-launch&#x27;,
+curve:&#x27;https://governance.aave.com/t/arfc-add-rlusd-to-core-instance/20214&#x27;,
+securitize:&#x27;https://ripple.com/ripple-press/ripple-and-securitize-enable-rlusd-smart-sontract-functionality-for-blackrock-buidl-and-vaneck-vbill-tokenized-funds/&#x27;,
+prime:&#x27;https://ripple.com/ripple-press/ripple-announces-support-for-hyperliquid-expanding-institutional-access-to-onchain-liquidity/&#x27;,
+payments:&#x27;https://ripple.com/ripple-press/ripple-integrates-rlusd-into-ripple-payments-driving-enterprise-demand-and-utility/&#x27;,
+tranglo:&#x27;https://ripple.com/customer-case-study/tranglo/&#x27;,
+africa:&#x27;https://ripple.com/ripple-press/ripples-usd-backed-stablecoin-rlusd-arrives-in-Africa/&#x27;,
+turkey:&#x27;https://ripple.com/ripple-press/new-partnerships-bring-rlusd-to-turkiye/&#x27;,
+japan:&#x27;https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/&#x27;,
+custody:&#x27;https://ripple.com/ripple-press/ripple-brings-bank-grade-custody-solution-to-crypto-businesses/&#x27;,
+custody2026:&#x27;https://ripple.com/insights/ripple-custody-is-the-foundation-of-institutional-digital-asset-adoption/&#x27;,
+palisade:&#x27;https://ripple.com/ripple-press/ripple-acquires-palisade-to-offer-comprehensive-digital-asset-custody-solution/&#x27;,
+treasury:&#x27;https://treasury.ripple.com/gtreasury-is-now-ripple-treasury&#x27;,
+flare:&#x27;https://flare.network/news/fassets-fxrp-is-live-on-mainnet&#x27;,
+firelight:&#x27;https://flare.network/news/firelight-launch&#x27;,
+morpho:&#x27;https://flare.network/news/first-ever-modular-lending-for-xrp-debuts-on-flare-via-morpho-and-mystic&#x27;,
+chainlink:&#x27;https://ripple.com/ripple-press/ripple-adopts-the-chainlink-standard-to-further-rippleusd-utility-and-access-in-defi/&#x27;,
+native:&#x27;https://xrpl.org/docs/use-cases/tokenization/stablecoin-issuer&#x27;,
+lending:&#x27;https://ripple.com/insights/the-xrpl-lending-protocol-bringing-credit-infrastructure-onchain/&#x27;
+};
+// name, status, connection, role / qualification, evidence link
+const groups=[
+[&#x27;XRPL trading &amp; liquidity&#x27;,&#x27;Native XRPL applications&#x27;,[
+[&#x27;XPMarket&#x27;,&#x27;live&#x27;,&#x27;XRPL → native DEX / AMM&#x27;,&#x27;Trading terminal, swaps, liquidity pools, token launches and NFT tools. Uses the ledger’s shared exchange infrastructure.&#x27;,&#x27;https://xpmarket.com/&#x27;],
+[&#x27;Magnetic&#x27;,&#x27;live&#x27;,&#x27;XRPL → native DEX / AMM&#x27;,&#x27;DEX interface, swaps, AMM, farming and token-launch tools; also supports Xahau.&#x27;,&#x27;https://xmagnetic.org/WhitePaper.pdf&#x27;],
+[&#x27;First Ledger&#x27;,&#x27;live&#x27;,&#x27;XRPL → native DEX&#x27;,&#x27;Token trading and launch platform.&#x27;,&#x27;https://firstledger.net/&#x27;],
+[&#x27;ANODEX&#x27;,&#x27;live&#x27;,&#x27;Anodos → XRPL DEX / AMM&#x27;,&#x27;Trading, liquidity management and on/off-ramp interface. Anodos lists ANODEX as live; its separate neobank remains marked soon.&#x27;,&#x27;https://apps.anodos.finance/&#x27;],
+[&#x27;XRPL.to&#x27;,&#x27;live&#x27;,&#x27;XRPL → native DEX / AMM&#x27;,&#x27;Trading, routing, portfolio and token analytics interface.&#x27;,&#x27;https://xrpl.to/insights/xrpl-ecosystem-guide&#x27;],
+[&#x27;Sologenic / TX&#x27;,&#x27;legacy&#x27;,&#x27;Sologenic → XRPL; transition to TX&#x27;,&#x27;Established XRPL DEX / AMM tooling. Current site says the ecosystem is now part of TX; treat as a transition rather than an unchanged standalone platform.&#x27;,&#x27;https://sologenic.org/?network=mainnet&#x27;],
+[&#x27;Orchestra&#x27;,&#x27;legacy&#x27;,&#x27;XRPL → AMM interface&#x27;,&#x27;Historical AMM application. Its own documentation now explicitly marks Orchestra deprecated.&#x27;,&#x27;https://docs.orchestra.finance/about/overview/&#x27;]
+]],
+[&#x27;Institutional assets&#x27;,&#x27;XRPL funds, credit &amp; real estate&#x27;,[
+[&#x27;Ondo / OUSG&#x27;,&#x27;live&#x27;,&#x27;Ondo → OUSG on XRPL ↔ RLUSD&#x27;,&#x27;Tokenized U.S. Treasuries; qualified investors can mint and redeem with RLUSD. Live launch confirmed June 2025.&#x27;,S.ondo],
+[&#x27;Archax / Aberdeen&#x27;,&#x27;live&#x27;,&#x27;Aberdeen fund → Archax → XRPL&#x27;,&#x27;Tokenized money-market fund access through Archax. Archax also uses Ripple Custody. Asset-manager relationship is mediated by Archax.&#x27;,S.archax],
+[&#x27;OpenEden / TBILL&#x27;,&#x27;live&#x27;,&#x27;OpenEden → TBILL on XRPL&#x27;,&#x27;Treasury-bill tokens accessible to eligible XRPL users. Do not assume every OpenEden product is deployed on XRPL.&#x27;,S.openeden],
+[&#x27;Guggenheim / Zeconomy&#x27;,&#x27;live&#x27;,&#x27;Zeconomy → DCP on XRPL&#x27;,&#x27;Digital commercial paper administered by Guggenheim Treasury Services; Ripple describes the launch in its Apex recap.&#x27;,S.guggenheim],
+[&#x27;DBS / Franklin Templeton&#x27;,&#x27;live&#x27;,&#x27;Franklin fund ↔ RLUSD via DBS&#x27;,&#x27;Ripple now describes the tokenized fund / RLUSD trading solution as built. Repo and collateral lending were exploratory in the original MOU; that phase is not confirmed here.&#x27;,S.dbs],
+[&#x27;VERT Capital&#x27;,&#x27;live&#x27;,&#x27;Structured credit → XRPL + EVM sidechain&#x27;,&#x27;Brazilian credit platform with completed tokenized issuances. Recording an issuance does not establish liquid secondary trading.&#x27;,S.vert],
+[&#x27;Ctrl Alt / Dubai Land Dept.&#x27;,&#x27;live&#x27;,&#x27;Title deeds → Ctrl Alt → XRPL; Ripple Custody&#x27;,&#x27;Tokenized real-estate title deeds are being issued on XRPL under the DLD project; custody is provided through Ripple technology.&#x27;,S.ctrl],
+[&#x27;Aviva Investors&#x27;,&#x27;announced&#x27;,&#x27;Aviva → tokenized funds on XRPL&#x27;,&#x27;Fund-tokenization collaboration identified by Ripple; deployment scale and production assets are not established by this source.&#x27;,S.zilo],
+[&#x27;ZILO&#x27;,&#x27;announced&#x27;,&#x27;Transfer agency → XRPL fund infrastructure&#x27;,&#x27;Existing partnership and strategic investment announced August 2026. Supplies digital records and transfer-agency capabilities.&#x27;,S.zilo],
+[&#x27;Licuido&#x27;,&#x27;announced&#x27;,&#x27;Issuance / collateral marketplace → XRPL&#x27;,&#x27;Existing partnership and strategic investment announced August 2026. Focus on distribution, collateral movement and settlement.&#x27;,S.zilo],
+[&#x27;Mercado Bitcoin&#x27;,&#x27;announced&#x27;,&#x27;RWA issuance → XRPL; also Ripple Payments&#x27;,&#x27;Planned $200m+ tokenization programme. Separately confirmed as a Ripple Payments user and RLUSD distributor; planned issuance is not counted as completed.&#x27;,S.mb],
+[&#x27;Unloq / SC+&#x27;,&#x27;announced&#x27;,&#x27;Trade obligations → RLUSD settlement on XRPL&#x27;,&#x27;BLOOM pilot with Ripple: shipment-triggered settlement and supply-chain-finance workflows. Pilot announcement, not proof of scaled production.&#x27;,S.unloq]
+]],
+[&#x27;Stablecoin issuers&#x27;,&#x27;Settlement assets on XRPL&#x27;,[
+[&#x27;Ripple / RLUSD&#x27;,&#x27;live&#x27;,&#x27;Ripple-issued RLUSD → XRPL + other chains&#x27;,&#x27;Official docs list XRPL, Ethereum, Base, Ink, Optimism, Unichain and XRPL EVM. RLUSD usage must be attributed by chain.&#x27;,S.rlusd],
+[&#x27;Circle / USDC&#x27;,&#x27;live&#x27;,&#x27;Circle Mint → native USDC on XRPL&#x27;,&#x27;Native issuance and Circle API support confirmed. USDC activity benefits XRPL without necessarily using Ripple commercial products.&#x27;,S.circle],
+[&#x27;Schuman / EURØP&#x27;,&#x27;live&#x27;,&#x27;Schuman Financial → EURØP on XRPL&#x27;,&#x27;Native euro stablecoin integration announced May 2025.&#x27;,S.euro],
+[&#x27;Braza / BBRL &amp; USDB&#x27;,&#x27;live&#x27;,&#x27;Braza → BRL and USD tokens on XRPL&#x27;,&#x27;BBRL and USDB launches announced in 2025. These are separate issuers/products from RLUSD.&#x27;,S.usdb],
+[&#x27;AUDC / AUDD&#x27;,&#x27;live&#x27;,&#x27;AUDC → AUDD on XRPL and other chains&#x27;,&#x27;Australian-dollar stablecoin. Issuer profile in Circle’s partner directory identifies native XRPL issuance.&#x27;,&#x27;https://partners.circle.com/partner/audc-pty-ltd&#x27;]
+]],
+[&#x27;Yield &amp; money markets&#x27;,&#x27;XRPL access with distinct execution models&#x27;,[
+[&#x27;Doppler Finance&#x27;,&#x27;live&#x27;,&#x27;XRPL deposits → custody + CeDeFi strategies&#x27;,&#x27;XRP vault documentation explicitly describes custodial / centralized yield strategies. XRPL deposits are not proof that yield is generated on XRPL.&#x27;,S.doppler],
+[&#x27;Doppler / OpenEden&#x27;,&#x27;announced&#x27;,&#x27;Doppler ↔ OpenEden USDO / TBILL&#x27;,&#x27;February 2026 partnership to connect XRP and RLUSD liquidity to RWA yield. Announcement uses future-tense integration language.&#x27;,S.dopplerrwa],
+[&#x27;SBI Ripple Asia / SBI DM&#x27;,&#x27;announced&#x27;,&#x27;SBI Ripple Asia ↔ Doppler; SBI Digital Markets custody&#x27;,&#x27;MOU to explore XRP yield and tokenization. SBI Digital Markets named institutional custodian for the initiative.&#x27;,S.dopplersbi],
+[&#x27;Strobe&#x27;,&#x27;live&#x27;,&#x27;XRPL front end ↔ Axelar ↔ EVM contracts&#x27;,&#x27;Money-market application; site reports mainnet launched. Audit describes EVM-sidechain execution. Do not classify it as the native XRPL lending protocol.&#x27;,&#x27;https://strobe.finance/&#x27;],
+[&#x27;Native lending protocol&#x27;,&#x27;announced&#x27;,&#x27;XRPL protocol → future credit applications&#x27;,&#x27;XLS-65 / XLS-66 are protocol capabilities, not a company. The cited Ripple article says validator approval is required and devnet testing is available.&#x27;,S.lending]
+]],
+[&#x27;EVM application layer&#x27;,&#x27;Separate XRPL EVM chain · listed deployments need checking&#x27;,[
+[&#x27;Moai Finance&#x27;,&#x27;listed&#x27;,&#x27;XRPL ecosystem ↔ XRPL EVM&#x27;,&#x27;Multi-chain swaps / liquidity app listed in the official EVM ecosystem guide. EVM deployment and current activity not independently audited.&#x27;,S.evm],
+[&#x27;Hammy Swap&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM → DEX&#x27;,&#x27;Swaps and farming; official ecosystem listing, not independently verified current production.&#x27;,S.evm],
+[&#x27;Surge DEX&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM → concentrated-liquidity DEX&#x27;,&#x27;Listed Uniswap-v3-style trading application.&#x27;,S.evm],
+[&#x27;Xrise&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM → DeFi application&#x27;,&#x27;Listed cooperative DeFi project using vote-escrow mechanics.&#x27;,S.evm],
+[&#x27;MoreMarkets&#x27;,&#x27;listed&#x27;,&#x27;XRP ecosystem → yield application&#x27;,&#x27;Listed XRP yield platform; precise execution paths and current deployment need product-level validation.&#x27;,S.evm],
+[&#x27;Securd&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM ecosystem → lending&#x27;,&#x27;Listed lending / liquidity-financing project. Not treated as confirmed live based solely on directory inclusion.&#x27;,S.evm]
+]],
+[&#x27;RLUSD institutional DeFi&#x27;,&#x27;Ethereum / multichain · not native XRPL apps&#x27;,[
+[&#x27;Aave V3&#x27;,&#x27;live&#x27;,&#x27;Ethereum RLUSD → Aave Core&#x27;,&#x27;RLUSD lending and borrowing market. Integration confirmed by Aave; activity belongs to Ethereum for chain-level reporting.&#x27;,S.aave],
+[&#x27;Aave Horizon&#x27;,&#x27;live&#x27;,&#x27;Tokenized collateral → RLUSD borrowing&#x27;,&#x27;Institutional RWA lending market with RLUSD as a supplied and borrowable stablecoin. Runs on Ethereum.&#x27;,S.horizon],
+[&#x27;Curve&#x27;,&#x27;live&#x27;,&#x27;Ethereum RLUSD → stablecoin pools&#x27;,&#x27;RLUSD pool documented in Aave governance. Pool availability does not imply a bilateral Ripple partnership.&#x27;,S.curve],
+[&#x27;Securitize / BUIDL&#x27;,&#x27;live&#x27;,&#x27;BlackRock BUIDL → RLUSD exchange facility&#x27;,&#x27;Securitize integration lets eligible BUIDL holders exchange shares to Ripple for RLUSD. This does not establish BUIDL issuance on XRPL.&#x27;,S.securitize],
+[&#x27;Securitize / VBILL&#x27;,&#x27;announced&#x27;,&#x27;VanEck VBILL → RLUSD exchange facility&#x27;,&#x27;Same facility announced with support expected shortly after BUIDL; completion not independently established here.&#x27;,S.securitize],
+[&#x27;Hyperliquid&#x27;,&#x27;live&#x27;,&#x27;Ripple Prime → Hyperliquid derivatives&#x27;,&#x27;Institutional venue access enabled February 2026. Hyperliquid is an external chain / venue, not an XRPL application.&#x27;,S.prime]
+]],
+[&#x27;Payments &amp; distribution&#x27;,&#x27;Ripple products / RLUSD · chain varies by flow&#x27;,[
+[&#x27;Tranglo&#x27;,&#x27;live&#x27;,&#x27;Tranglo → Ripple Payments&#x27;,&#x27;Cross-border payment customer and payout network; source describes operating usage.&#x27;,S.tranglo],
+[&#x27;BKK Forex&#x27;,&#x27;live&#x27;,&#x27;BKK Forex → Ripple Payments + RLUSD&#x27;,&#x27;RLUSD used in cross-border payment flows. Source does not identify the chain for every flow.&#x27;,S.payments],
+[&#x27;iSend&#x27;,&#x27;live&#x27;,&#x27;iSend → Ripple Payments + RLUSD&#x27;,&#x27;RLUSD payment and treasury integration confirmed by Ripple.&#x27;,S.payments],
+[&#x27;Chipper Cash&#x27;,&#x27;live&#x27;,&#x27;Chipper Cash → RLUSD distribution&#x27;,&#x27;African access / distribution partner. Do not equate availability with measured settlement volume.&#x27;,S.africa],
+[&#x27;Yellow Card&#x27;,&#x27;live&#x27;,&#x27;Yellow Card → RLUSD distribution&#x27;,&#x27;African stablecoin access / distribution partner.&#x27;,S.africa],
+[&#x27;VALR&#x27;,&#x27;live&#x27;,&#x27;VALR → RLUSD exchange access&#x27;,&#x27;Exchange distribution relationship in Africa.&#x27;,S.africa],
+[&#x27;SBI VC Trade&#x27;,&#x27;live&#x27;,&#x27;SBI VC Trade → RLUSD in Japan&#x27;,&#x27;Official launch confirmed June 2026. Chain-specific use should be checked separately.&#x27;,S.japan],
+[&#x27;BiLira / Bitexen / Bitlo&#x27;,&#x27;live&#x27;,&#x27;Turkish platforms → RLUSD access&#x27;,&#x27;Three separately named Turkish distribution partners. Grouped here for readability.&#x27;,S.turkey]
+]],
+[&#x27;Trading access &amp; ramps&#x27;,&#x27;RLUSD listings · not proof of XRPL deployment&#x27;,[
+[&#x27;Binance / Bybit / OKX&#x27;,&#x27;live&#x27;,&#x27;Exchanges → RLUSD markets&#x27;,&#x27;Ripple lists all three as RLUSD venues. Supported deposit chains and market availability vary.&#x27;,S.turkey],
+[&#x27;Kraken / Gemini&#x27;,&#x27;live&#x27;,&#x27;Exchanges → RLUSD markets&#x27;,&#x27;Named by Ripple as RLUSD distribution venues.&#x27;,S.africa],
+[&#x27;Bitstamp / Bullish&#x27;,&#x27;live&#x27;,&#x27;Exchanges → RLUSD markets&#x27;,&#x27;Named RLUSD partners. Listings do not establish an XRPL-native institutional application.&#x27;,S.payments],
+[&#x27;Bitso&#x27;,&#x27;live&#x27;,&#x27;Bitso → RLUSD distribution&#x27;,&#x27;Named RLUSD venue; also part of Ripple’s broader payments ecosystem.&#x27;,S.africa],
+[&#x27;LMAX Digital&#x27;,&#x27;live&#x27;,&#x27;Institutional venue → RLUSD&#x27;,&#x27;Named institutional trading access partner.&#x27;,S.payments],
+[&#x27;Zero Hash&#x27;,&#x27;live&#x27;,&#x27;Embedded infrastructure → RLUSD&#x27;,&#x27;Named access / infrastructure partner in Ripple’s integration announcement.&#x27;,S.payments],
+[&#x27;Uphold / CoinMENA&#x27;,&#x27;live&#x27;,&#x27;Platforms → RLUSD distribution&#x27;,&#x27;Named available RLUSD venues. Grouped for readability.&#x27;,S.africa],
+[&#x27;Independent Reserve&#x27;,&#x27;live&#x27;,&#x27;Exchange → RLUSD distribution&#x27;,&#x27;Named available RLUSD exchange partner.&#x27;,S.africa]
+]],
+[&#x27;Ripple enterprise stack&#x27;,&#x27;Commercial platforms · multichain&#x27;,[
+[&#x27;Ripple Payments&#x27;,&#x27;live&#x27;,&#x27;Businesses → Ripple → fiat / digital-asset payouts&#x27;,&#x27;Commercial payment platform; RLUSD use confirmed for selected customers.&#x27;,S.payments],
+[&#x27;Ripple Custody&#x27;,&#x27;live&#x27;,&#x27;Institutions → custody software → supported assets&#x27;,&#x27;Enterprise custody infrastructure. A custody client is not automatically an XRPL or XRP settlement user.&#x27;,S.custody],
+[&#x27;Ripple Treasury&#x27;,&#x27;live&#x27;,&#x27;Former GTreasury → corporate treasury workflows&#x27;,&#x27;Treasury management, cash visibility and payment workflows. Existing corporate customers do not all become confirmed XRPL users.&#x27;,S.treasury],
+[&#x27;Ripple Prime&#x27;,&#x27;live&#x27;,&#x27;Institutional brokerage → external liquidity venues&#x27;,&#x27;Institutional prime brokerage; supports Hyperliquid access and cross-margining.&#x27;,S.prime],
+[&#x27;Palisade&#x27;,&#x27;live&#x27;,&#x27;Acquired by Ripple → wallet infrastructure&#x27;,&#x27;Wallet-as-a-service capability acquired for payments, fintech and corporate use cases.&#x27;,S.palisade],
+[&#x27;Ripple Mint&#x27;,&#x27;live&#x27;,&#x27;Eligible institutions → RLUSD mint / redeem&#x27;,&#x27;Institutional access to issuance and redemption. Standard Custody and other regulated Ripple entities issue/distribute RLUSD.&#x27;,S.rlusd]
+]],
+[&#x27;Institutional custody users&#x27;,&#x27;Ripple Custody relationships · chain unspecified&#x27;,[
+[&#x27;BBVA&#x27;,&#x27;live&#x27;,&#x27;BBVA → Ripple Custody&#x27;,&#x27;Named institutional custody customer. No XRPL transaction flow inferred.&#x27;,S.custody],
+[&#x27;DBS Bank&#x27;,&#x27;live&#x27;,&#x27;DBS → Ripple Custody&#x27;,&#x27;Named custody customer; separate tokenized fund collaboration appears above.&#x27;,S.custody],
+[&#x27;SG–FORGE&#x27;,&#x27;live&#x27;,&#x27;Société Générale–FORGE → Ripple Custody&#x27;,&#x27;Named custody customer. Do not infer that every issued asset is on XRPL.&#x27;,S.custody],
+[&#x27;DZ BANK&#x27;,&#x27;live&#x27;,&#x27;DZ BANK → Ripple Custody&#x27;,&#x27;Named institutional custody user.&#x27;,S.custody2026],
+[&#x27;Intesa Sanpaolo&#x27;,&#x27;live&#x27;,&#x27;Intesa Sanpaolo → Ripple Custody&#x27;,&#x27;Named by Ripple among institutions using its custody infrastructure.&#x27;,S.custody2026],
+[&#x27;Absa Bank&#x27;,&#x27;live&#x27;,&#x27;Absa → Ripple Custody&#x27;,&#x27;Named tier-one custody customer in Ripple’s Palisade announcement.&#x27;,S.palisade],
+[&#x27;RULEMATCH&#x27;,&#x27;live&#x27;,&#x27;RULEMATCH → Ripple Custody&#x27;,&#x27;Institutional trading platform named as a custody customer.&#x27;,S.custody],
+[&#x27;Futureverse&#x27;,&#x27;live&#x27;,&#x27;Futureverse → Ripple Custody&#x27;,&#x27;Named custody customer. Included as infrastructure adoption, not institutional DeFi volume.&#x27;,S.custody],
+[&#x27;BNY&#x27;,&#x27;live&#x27;,&#x27;BNY → custody of RLUSD reserves&#x27;,&#x27;Reserve custody is an offchain institutional relationship; distinct from using Ripple Custody software.&#x27;,&#x27;https://ripple.com/products/stablecoin/&#x27;]
+]],
+[&#x27;Access &amp; connectivity&#x27;,&#x27;Wallets, bridges and data services&#x27;,[
+[&#x27;Xaman&#x27;,&#x27;live&#x27;,&#x27;Wallet / xApps → XRPL&#x27;,&#x27;Self-custody wallet and application access; also supports Xahau.&#x27;,&#x27;https://xaman.app/&#x27;],
+[&#x27;Crossmark&#x27;,&#x27;live&#x27;,&#x27;Browser wallet → XRPL&#x27;,&#x27;Wallet, account management and application SDK.&#x27;,&#x27;https://crossmark.io/&#x27;],
+[&#x27;GemWallet&#x27;,&#x27;live&#x27;,&#x27;Browser wallet → XRPL&#x27;,&#x27;Wallet and application transaction-signing access.&#x27;,&#x27;https://gemwallet.app/&#x27;],
+[&#x27;Axelar / Squid&#x27;,&#x27;live&#x27;,&#x27;XRPL ↔ XRPL EVM&#x27;,&#x27;Axelar powers bridging; Squid provides routing / transfer interface.&#x27;,S.evmlaunch],
+[&#x27;Peersyst&#x27;,&#x27;live&#x27;,&#x27;Peersyst + Ripple → XRPL EVM development&#x27;,&#x27;Infrastructure developer for the separate EVM chain, not an institutional demand source.&#x27;,S.evmdoc],
+[&#x27;Band Protocol&#x27;,&#x27;live&#x27;,&#x27;Price feeds → XRPL EVM apps&#x27;,&#x27;Oracle infrastructure identified in the EVM mainnet launch.&#x27;,S.evmlaunch],
+[&#x27;Chainlink&#x27;,&#x27;live&#x27;,&#x27;RLUSD price feeds → Ethereum DeFi&#x27;,&#x27;Live RLUSD / USD feeds on Ethereum; this specific integration does not prove a native XRPL feed.&#x27;,S.chainlink],
+[&#x27;MetaMask / Keplr&#x27;,&#x27;live&#x27;,&#x27;Wallets → XRPL EVM&#x27;,&#x27;Supported wallet interfaces for the EVM sidechain; different from native XRPL wallet support.&#x27;,S.evm],
+[&#x27;Grove / Goldsky / Blockscout&#x27;,&#x27;live&#x27;,&#x27;RPC / indexing / explorer → XRPL EVM&#x27;,&#x27;Supporting infrastructure identified by Ripple at mainnet launch.&#x27;,S.evmlaunch]
+]],
+[&#x27;Adjacent XRPFi&#x27;,&#x27;Flare applications · independent chain&#x27;,[
+[&#x27;Flare / FXRP&#x27;,&#x27;live&#x27;,&#x27;XRP → FAssets → FXRP on Flare&#x27;,&#x27;Collateralized XRP representation enabling applications on Flare. Not native XRPL execution or native XRP staking.&#x27;,S.flare],
+[&#x27;SparkDEX&#x27;,&#x27;live&#x27;,&#x27;FXRP → DEX on Flare&#x27;,&#x27;Flare identifies FXRP trading pools on SparkDEX.&#x27;,S.flare],
+[&#x27;BlazeSwap&#x27;,&#x27;live&#x27;,&#x27;FXRP → DEX on Flare&#x27;,&#x27;Flare identifies FXRP trading pools on BlazeSwap.&#x27;,S.flare],
+[&#x27;Enosys&#x27;,&#x27;live&#x27;,&#x27;FXRP → DEX on Flare&#x27;,&#x27;DEX pool availability confirmed. Other credit / stablecoin products require separate status checks.&#x27;,S.flare],
+[&#x27;Kinetic&#x27;,&#x27;live&#x27;,&#x27;FXRP → lending on Flare&#x27;,&#x27;FXRP supply and isolated borrowing-market integration documented at launch.&#x27;,S.flare],
+[&#x27;Firelight&#x27;,&#x27;live&#x27;,&#x27;FXRP → stXRP on Flare&#x27;,&#x27;Liquid staking application launched December 2025. This is not XRPL consensus staking.&#x27;,S.firelight],
+[&#x27;Morpho / Mystic&#x27;,&#x27;live&#x27;,&#x27;FXRP → modular lending on Flare&#x27;,&#x27;Flare reports live modular lending via Morpho and Mystic in February 2026.&#x27;,S.morpho]
+]]];
+const symbols={live:&#x27;●&#x27;,announced:&#x27;◇&#x27;,listed:&#x27;○&#x27;,legacy:&#x27;×&#x27;};
+const names={live:&#x27;Reported available / operating&#x27;,announced:&#x27;Announced / pilot; full deployment not established&#x27;,listed:&#x27;Official ecosystem listing; deployment unverified&#x27;,legacy:&#x27;Legacy / transition / deprecated&#x27;};
+const buttons=[];
+function select(row,button){
+  buttons.forEach(b=&gt;b.setAttribute(&#x27;aria-pressed&#x27;,String(b===button)));
+  const box=root.querySelector(&#x27;#ripple-selection&#x27;); box.replaceChildren();
+  const title=document.createElement(&#x27;div&#x27;); title.style.fontWeight=&#x27;500&#x27;; title.textContent=row[0]+&#x27; · &#x27;+names[row[1]];
+  const relation=document.createElement(&#x27;div&#x27;); relation.className=&#x27;detail-line&#x27;; relation.textContent=row[2];
+  const detail=document.createElement(&#x27;div&#x27;); detail.className=&#x27;detail-line text-small&#x27;; detail.textContent=row[3];
+  const link=document.createElement(&#x27;a&#x27;); link.href=row[4]; link.target=&#x27;_blank&#x27;;link.rel=&#x27;noopener noreferrer&#x27;;link.textContent=&#x27;Source: &#x27;+new URL(row[4]).hostname;link.className=&#x27;text-small&#x27;;
+  box.append(title,relation,detail,link);
+}
+for(const [label,sub,rows] of groups){
+ const lane=document.createElement(&#x27;section&#x27;); lane.className=&#x27;lane&#x27;;
+ const heading=document.createElement(&#x27;div&#x27;);
+ const title=document.createElement(&#x27;div&#x27;);title.className=&#x27;lane-title&#x27;;title.textContent=label;
+ const subtitle=document.createElement(&#x27;div&#x27;);subtitle.className=&#x27;lane-sub text-small text-muted&#x27;;subtitle.textContent=sub;
+ heading.append(title,subtitle);
+ const grid=document.createElement(&#x27;div&#x27;);grid.className=&#x27;names&#x27;;
+ rows.forEach(row=&gt;{const button=document.createElement(&#x27;button&#x27;);button.type=&#x27;button&#x27;;button.className=&#x27;btn viz-tile&#x27;;button.textContent=symbols[row[1]]+&#x27; &#x27;+row[0];button.setAttribute(&#x27;aria-label&#x27;,row[0]+&#x27;. &#x27;+names[row[1]]+&#x27;. &#x27;+row[2]);button.setAttribute(&#x27;aria-pressed&#x27;,&#x27;false&#x27;);button.addEventListener(&#x27;click&#x27;,()=&gt;select(row,button));buttons.push(button);grid.append(button);});
+ lane.append(heading,grid);root.querySelector(&#x27;#ripple-lanes&#x27;).append(lane);
+}
+select(groups[1][2][0],buttons[7]);
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
