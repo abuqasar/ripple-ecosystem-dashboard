@@ -1,6 +1,7 @@
 <div id="ripple-app-map">
   <h2>Ripple, XRPL &amp; XRP application ecosystem</h2>
   <div class="text-small text-muted">Public evidence reviewed 17 September 2026 · Select a name for its connection, status and source</div>
+  <p class="text-small" id="coverage-summary"></p>
   <div class="card" id="ripple-selection" aria-live="polite"></div>
   <div id="ripple-lanes"></div>
   <div class="text-small" id="ripple-legend">● Product / integration reported available &nbsp; ◇ Announced / pilot &nbsp; ○ Ecosystem-listed; deployment unverified &nbsp; × Legacy / deprecated</div>
@@ -183,8 +184,70 @@ const groups=[
 ['Firelight','live','FXRP → stXRP on Flare','Liquid staking application launched December 2025. This is not XRPL consensus staking.',S.firelight],
 ['Morpho / Mystic','live','FXRP → modular lending on Flare','Flare reports live modular lending via Morpho and Mystic in February 2026.',S.morpho]
 ]]];
-const symbols={live:'●',announced:'◇',listed:'○',legacy:'×'};
-const names={live:'Reported available / operating',announced:'Announced / pilot; full deployment not established',listed:'Official ecosystem listing; deployment unverified',legacy:'Legacy / transition / deprecated'};
+// Expanded discovery pass: directory presence and programme participation are not deployment evidence.
+const discovery={
+ grants:'https://xrplgrants.org/awardees',
+ evm:'https://www.xrplevm.org/blog/xrpl-evm-is-live',
+ tools:'https://xrpl.org/about/uses',
+ payments:'https://ripple.com/ripple-press/ripple-redefines-payments-with-end-to-end-stablecoin-platform-and-global-customer-momentum/',
+ customers:'https://ripple.com/customers/',
+ uae:'https://ripple.com/ripple-press/zand-bank-and-mamo-newest-ripple-payments-customers-in-uae/',
+ cards:'https://ripple.com/ripple-press/ripple-teams-up-with-mastercard-webbank-and-gemini/',
+ tenity:'https://www.tenity.com/press-tenity-announces-9-game-changing-projects-as-part-of-xrpl-accelerator-cohort-6-bridging-web3-innovation-with-real-world-impact/',
+ udax:'https://ripple.com/insights/ripple-and-uc-berkeley-launch-the-university-digital-asset-xcelerator-udax-to-supercharge-the-xrp-ecosystem/',
+ hackathon:'https://hackathons.xrpl-commons.org/projects'
+};
+const add=(index,rows)=>groups[index][2].push(...rows);
+add(3,[['Soil / ORQO','live','RLUSD → RWA-backed yield on XRPL','Provider offers RLUSD yield backed by external credit strategies. Its native XRP vault is labelled launching soon; do not treat the two products as equally available.','https://xrpl.soil.co/']]);
+add(4,[
+ ['Marsgate','listed','XRPL EVM → DEX','EVM team lists a concentrated-liquidity exchange. Current deployment requires verification.',discovery.evm],
+ ['Vertex','listed','XRPL EVM directory → derivatives','Directory lists a cross-chain trading venue. Listing alone does not establish an operating XRPL EVM market.',discovery.evm],
+ ['Fomo.biz','listed','XRPL EVM → launch platform','Listed token-launch and trading application; current deployment unverified.',discovery.evm],
+ ['The Nexus Portal','listed','XRPL EVM → DeFi','Listed staking-oriented application; current deployment unverified.',discovery.evm]
+]);
+add(6,[
+ ...[['alfred','Stablecoin / fiat payments'],['AltPayNet','Philippines outbound payments'],['AMINA Bank','Institutional cross-border payments'],['Banco Genial','Brazilian cross-border payouts'],['Corpay','APAC funding with RLUSD'],['ECIB','Malaysian institutional payments'],['MassPay','Payout orchestration']].map(([n,r])=>[n,'live',r+' → Ripple Payments','Named operating customer in Ripple’s March 2026 update. Chain-specific volumes are not established.',discovery.payments]),
+ ['CambioReal','announced','Payment orchestration → Ripple settlement','March 2026 source describes integration in progress; completed rollout not verified.',discovery.payments],
+ ...['Zand Bank','Mamo'].map(n=>[n,'announced','UAE payments → Ripple Payments','Named customer in May 2025 announcement; source uses future-tense implementation language.',discovery.uae]),
+ ...['Nium / Instarem','Modulr','Sentbe','SBI Remit','Travelex Bank'].map(n=>[n,'listed','Cross-border payments → Ripple network','Featured in Ripple customer references. Current product version, settlement asset and chain require confirmation.',discovery.customers]),
+ ['Mastercard','announced','Card settlement → RLUSD on XRPL','November 2025 collaboration with WebBank and Gemini; regulatory approval and implementation were pending.',discovery.cards],
+ ['WebBank','announced','Gemini card issuer → RLUSD settlement','Bank participant in the Mastercard collaboration; not evidence of scaled production settlement.',discovery.cards]
+]);
+add(8,[['Rail','live','Virtual accounts / collections → Ripple Payments','Acquired capability incorporated into Ripple’s expanded payments offering.',discovery.payments]]);
+add(10,[
+ ['Skip Go','live','Cosmos IBC ↔ XRPL EVM','Transfer interface identified by the EVM team. This is connectivity, not a separate native XRPL application.',discovery.evm],
+ ['Gas.zip','live','Other chains → XRP gas on XRPL EVM','Gas funding service identified in the EVM guide.',discovery.evm],
+ ['Range','live','XRPL EVM → analytics / security','Analytics service linked by the EVM team.',discovery.evm],
+ ['Wormhole','live','XRPL EVM ↔ external chains','Official documentation states the EVM integration is live. Do not infer identical deployment on native XRPL.','https://docs.xrplevm.org/pages/users/introduction/what-is-the-xrplevm'],
+ ...[['Bithomp','Explorer'],['Cryptum','API / SDK'],['GateHub','Issued-asset markets'],['OnTheDex','Market data'],['Towo Labs','Wallet infrastructure'],['X-tokenize','Token tooling'],['3ZY','Application tooling'],['XRP Toolkit','Asset management / DEX'],['XRPL Rosetta','Data visualization'],['XRPL.org Ledger Explorer','Explorer'],['XRPSCAN','Explorer / analytics']].map(([n,r])=>[n,'listed','XRPL → '+r,'Featured in the XRPL project directory; current service availability not independently tested.',discovery.tools])
+]);
+groups.push(['XRPL grant discovery','Grant recipients · deployment and current activity unverified',[
+ ...[['Asseto','Yield'],['C9 Tech','Payments'],['PagCrypto','Payments'],['Sonica','Tokenization'],['T-Blocks','Real estate'],['TokenOne','Credit'],['Cointimes','Micropayments'],['goBlockchain','Tokenization'],['Bitbob','Payments'],['Breezepay','Merchant payments'],['Kodelab','Credit'],['MC² Finance','Funds'],['Propto','Real estate'],['Tender Merchant','Payments'],['VWBL','Access control'],['ChatXRP','AI'],['DeXfi','Trading'],['EUA Carbon Token','Carbon'],['EVM.Finance','Asset management'],['FLUIDEFI InstiLink','Institutional DeFi'],['VNX Stablecoins','Stablecoins'],['Web3 Enabler / XRP for Salesforce','Payments']].map(([n,r])=>[n,'research',r,'Grant-listed; validate deployment.',discovery.grants])
+]]);
+groups.push(['Tenity accelerator discovery','Cohort 6 · programme participation is not mainnet proof',[
+ ...[['endl.io','Cross-border accounts'],['Archway Finance','Payroll / invoices'],['Effect Studios / Zynara','Freelance escrow'],['Agrify','Supply-chain payments'],['T54 Labs / tLedger','Agent payments'],['Stablpay','Stablecoin payments'],['Loula','Trade payments'],['Fortstock','Warehouse-receipt finance']].map(([n,r])=>[n,'research','XRPL accelerator → '+r,'Named in Tenity’s June 2025 cohort. Production deployment and retention need follow-up.',discovery.tenity])
+]]);
+groups.push(['UDAX startup discovery','Berkeley cohort · stage varies by project',[
+ ['WaveTip','live','Twitch tipping → XRPL','Ripple reports a mainnet launch and Chrome extension release.',discovery.udax],
+ ...[['X-Card','Collectibles'],['BlockBima','Climate insurance'],['CRX Digital Assets','Tokenized credit'],['Blockroll','Stablecoin cards'],['WellArrive','Marketplace'],['Spout','Equity tokenization'],['EXFIL','Threat intelligence'],['Mintara Labs','Deposit insurance']].map(([n,r])=>[n,'research','UDAX → '+r,'Named in Ripple’s January 2026 cohort report; exact production XRPL integration requires validation.',discovery.udax])
+]]);
+groups.push(['Experimental applications','Hackathon prototypes · excluded from operating adoption claims',[
+ ...[['XRPL-BONDS','Bonds'],['Agent Octopus','Energy payments'],['PermiX','Permissioned trading'],['XTrace','Compliance'],['CryptoCars','Gaming'],['MeltyFi','NFT credit']].map(([n,r])=>[n,'research','XRPL hackathon → '+r,'Prototype listed by XRPL Commons. Mainnet and commercial readiness not established.',discovery.hackathon])
+]]);
+groups.push(['Adjacent networks & access','Related ecosystems · not native XRPL deployments',[
+ ['Evernode','listed','Adjacent smart-contract infrastructure','XRPL directory lists the project. Treat as adjacent infrastructure; validate its separate execution and settlement model before attribution.',discovery.tools],
+ ...['Cosmos Hub','Osmosis','Elys Network','Noble','Injective'].map(n=>[n,'live','IBC connectivity ↔ XRPL EVM','EVM team reports an IBC connection. This does not mean all applications on this network integrate XRPL.',discovery.evm])
+]]);
+const symbols={live:'●',announced:'◇',listed:'○',legacy:'×',research:'△'};
+const names={live:'Reported available / operating',announced:'Announced / pilot; full deployment not established',listed:'Official listing / reference; current deployment unverified',legacy:'Legacy / transition / deprecated',research:'Programme / prototype discovery; production unverified'};
+const totalEntries=groups.reduce((n,g)=>n+g[2].length,0);
+root.querySelector('#coverage-summary').textContent=totalEntries+' entries across '+groups.length+' categories. Expanded research directory, not an exhaustive registry. Includes commercial customers, infrastructure and early-stage projects; grouped names and repeat organisations are not unique-company counts.';
+const coverage=document.createElement('details');
+const coverageTitle=document.createElement('summary');coverageTitle.textContent='Coverage, source directories and remaining gaps';coverage.append(coverageTitle);
+const coverageText=document.createElement('p');coverageText.className='text-small';coverageText.textContent='Checked: XRPL featured projects, selected grant recipients, EVM documentation and ecosystem guide, Ripple customer announcements, Tenity cohort 6, Berkeley UDAX and Commons hackathons. The grants directory lists 199 recipients; only a selected subset is included here. EVM directory listings, older cohorts, NFT/gaming projects, Xahau applications, regional issuers and private integrations still require further review. A listing, investment or cohort place does not prove a live integration.';coverage.append(coverageText);
+for(const [label,url] of [['XRPL projects',discovery.tools],['All grant recipients',discovery.grants],['EVM ecosystem directory','https://ecosystem.xrplevm.org/'],['Commons incubator','https://www.xrpl-commons.org/the-aquarium'],['Submit research / correction','https://github.com/abuqasar/ripple-ecosystem-dashboard/issues']]){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label;a.style.marginRight='16px';coverage.append(a);}
+root.querySelector('#coverage-summary').after(coverage);
+root.querySelector('#ripple-legend').append(' · △ Programme / prototype discovery');
 const buttons=[];
 // Metrics are dated research snapshots, not a live feed. Each entry: value, scope/date, source.
 // Keys correspond to transaction volume, active wallets, ecosystem market cap, and TVL.
@@ -200,8 +263,8 @@ const usageMetrics={
 };
 function addUsage(box,row){
  const category=groups.findIndex(g=>g[2].includes(row));
- const indirect=[6,7,8,9,10].includes(category);
- const pending=row[1]==='announced'||row[1]==='listed'||row[1]==='legacy';
+ const indirect=[6,7,8,9,10,16].includes(category);
+ const pending=row[1]!=='live';
  const missing=['Not verified',pending?'Production usage not established; no verified figure in this research snapshot.':'No verified figure for this integration in this research snapshot.'];
  const data={
   volume:[...missing],
@@ -244,7 +307,7 @@ for(const [label,sub,rows] of groups){
  rows.forEach(row=>{const button=document.createElement('button');button.type='button';button.className='btn viz-tile';button.textContent=symbols[row[1]]+' '+row[0];button.setAttribute('aria-label',row[0]+'. '+names[row[1]]+'. '+row[2]);button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>select(row,button));buttons.push(button);grid.append(button);});
  lane.append(heading,grid);root.querySelector('#ripple-lanes').append(lane);
 }
-select(groups[1][2][0],buttons[7]);
+select(groups[1][2][0],buttons.find(b=>b.textContent.endsWith('Ondo / OUSG')));
 })();
 </script>
 
