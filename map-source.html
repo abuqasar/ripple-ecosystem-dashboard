@@ -8,7 +8,8 @@
 </div>
 <style>
 #ripple-app-map { color:var(--foreground); }
-#ripple-app-map #ripple-selection { margin:16px 0; }
+#ripple-app-map #ripple-selection { margin:16px 0; position:sticky; top:0; z-index:10; max-height:55vh; overflow-y:auto; background:var(--card); }
+#ripple-app-map .lane { scroll-margin-top:56vh; }
 #ripple-app-map .lane { display:grid; grid-template-columns:170px minmax(0,1fr); gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
 #ripple-app-map .lane-title { font-weight:500; }
 #ripple-app-map .lane-sub { margin-top:4px; }
