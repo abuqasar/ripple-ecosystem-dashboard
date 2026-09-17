@@ -13,6 +13,11 @@
 #ripple-app-map .lane-sub { margin-top:4px; }
 #ripple-app-map .names { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; align-content:start; }
 #ripple-app-map .detail-line { margin-top:5px; }
+#ripple-app-map .kpis { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; padding-top:16px; margin-top:12px; border-top:1px solid var(--border); }
+#ripple-app-map .kpi-value { font-weight:500; margin:6px 0; }
+#ripple-app-map .kpi-note { margin-top:5px; }
+@media(max-width:800px) { #ripple-app-map .kpis { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:420px) { #ripple-app-map .kpis { grid-template-columns:1fr; } }
 #ripple-app-map #ripple-legend { margin-top:14px; }
 @media(max-width:580px) { #ripple-app-map .lane { grid-template-columns:1fr; gap:8px; } }
 @media(max-width:380px) { #ripple-app-map .names { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -181,6 +186,44 @@ const groups=[
 const symbols={live:'●',announced:'◇',listed:'○',legacy:'×'};
 const names={live:'Reported available / operating',announced:'Announced / pilot; full deployment not established',listed:'Official ecosystem listing; deployment unverified',legacy:'Legacy / transition / deprecated'};
 const buttons=[];
+// Metrics are dated research snapshots, not a live feed. Each entry: value, scope/date, source.
+// Keys correspond to transaction volume, active wallets, ecosystem market cap, and TVL.
+const usageMetrics={
+ 'Ripple / RLUSD':{cap:['$2.396B supply','All chains · 3 Sep 2026. Circulating RLUSD at $1 par; supply proxy, not a quoted market valuation.','https://ripple.com/products/stablecoin/transparency/']},
+ 'Ondo / OUSG':{tvl:['$332.77M','OUSG fund across all supported chains · issuer page, 16 Sep 2026. XRPL-only allocation not verified.','https://ondo.finance/ousg']},
+ 'Flare / FXRP':{
+  volume:['3.4M+ transactions','FXRP DeFi on Flare · cumulative since launch, reported 8 May 2026. Transaction count, not USD settlement volume on XRPL.','https://flare.network/news/xrpfis-next-phase'],
+  wallets:['Not verified','Related figure: ~16.5K users since launch, reported 8 May 2026. Not a defined daily/monthly active-wallet measure.','https://flare.network/news/xrpfis-next-phase'],
+  tvl:['~$200M','XRP TVL in the Flare ecosystem · reported 8 May 2026. Historical context, outside native XRPL DeFi.','https://flare.network/news/xrpfis-next-phase']
+ },
+ 'Firelight':{tvl:['$76.12M','Flare vault TVL · DeFiLlama snapshot retrieved 17 Sep 2026 (cached 15 Sep). Not XRPL-native TVL.','https://defillama.com/protocol/firelight']}
+};
+function addUsage(box,row){
+ const category=groups.findIndex(g=>g[2].includes(row));
+ const indirect=[6,7,8,9,10].includes(category);
+ const pending=row[1]==='announced'||row[1]==='listed'||row[1]==='legacy';
+ const missing=['Not verified',pending?'Production usage not established; no verified figure in this research snapshot.':'No verified figure for this integration in this research snapshot.'];
+ const data={
+  volume:[...missing],
+  wallets:['Not verified','Distinct transacting addresses for a stated period required. Holders, downloads and customers are not active wallets.'],
+  cap:row[0]==='Ripple / RLUSD'?[...missing]:['Not directly attributable','Slide KPI tracks XRP market value and RLUSD supply; company valuation and app-token market cap are excluded.'],
+  tvl:indirect?['Not directly applicable','Service or access provider. Assets under custody and company-wide assets are not automatically XRPL TVL.']:[...missing],
+  ...usageMetrics[row[0]]
+ };
+ if(category===2) data.tvl=['Not directly applicable','Stablecoin reserves or circulating supply are not DeFi TVL; count only capital deployed into identified protocols.'];
+ const grid=document.createElement('section');grid.className='kpis';grid.setAttribute('aria-label','Key usage metrics');
+ for(const [key,label] of [['volume','Transaction volume'],['wallets','Active wallets'],['cap','Market cap'],['tvl','Total value locked']]){
+  const cell=document.createElement('div');
+  const heading=document.createElement('div');heading.textContent=label;
+  const value=document.createElement('div');value.className='kpi-value';value.textContent=data[key][0];
+  const note=document.createElement('div');note.className='text-small';note.textContent=data[key][1];
+  cell.append(heading,value,note);
+  if(data[key][2]){const a=document.createElement('a');a.href=data[key][2];a.target='_blank';a.rel='noopener noreferrer';a.className='text-small';a.textContent='Metric source ↗';cell.append(a);}
+  grid.append(cell);
+ }
+ const note=document.createElement('div');note.className='text-small kpi-note';note.textContent='Research snapshots · checked 17 Sep 2026 · Not verified does not mean zero. Figures with different scopes or dates should not be summed.';
+ box.append(grid,note);
+}
 function select(row,button){
   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
   const box=root.querySelector('#ripple-selection'); box.replaceChildren();
@@ -189,6 +232,7 @@ function select(row,button){
   const detail=document.createElement('div'); detail.className='detail-line text-small'; detail.textContent=row[3];
   const link=document.createElement('a'); link.href=row[4]; link.target='_blank';link.rel='noopener noreferrer';link.textContent='Source: '+new URL(row[4]).hostname;link.className='text-small';
   box.append(title,relation,detail,link);
+  addUsage(box,row);
 }
 for(const [label,sub,rows] of groups){
  const lane=document.createElement('section'); lane.className='lane';
@@ -203,3 +247,4 @@ for(const [label,sub,rows] of groups){
 select(groups[1][2][0],buttons[7]);
 })();
 </script>
+
