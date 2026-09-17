@@ -1038,6 +1038,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;div id=&quot;ripple-app-map&quot;&gt;
   &lt;h2&gt;Ripple, XRPL &amp;amp; XRP application ecosystem&lt;/h2&gt;
   &lt;div class=&quot;text-small text-muted&quot;&gt;Public evidence reviewed 17 September 2026 · Select a name for its connection, status and source&lt;/div&gt;
+  &lt;p class=&quot;text-small&quot; id=&quot;coverage-summary&quot;&gt;&lt;/p&gt;
   &lt;div class=&quot;card&quot; id=&quot;ripple-selection&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
   &lt;div id=&quot;ripple-lanes&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;text-small&quot; id=&quot;ripple-legend&quot;&gt;● Product / integration reported available &amp;nbsp; ◇ Announced / pilot &amp;nbsp; ○ Ecosystem-listed; deployment unverified &amp;nbsp; × Legacy / deprecated&lt;/div&gt;
@@ -1220,8 +1221,70 @@ const groups=[
 [&#x27;Firelight&#x27;,&#x27;live&#x27;,&#x27;FXRP → stXRP on Flare&#x27;,&#x27;Liquid staking application launched December 2025. This is not XRPL consensus staking.&#x27;,S.firelight],
 [&#x27;Morpho / Mystic&#x27;,&#x27;live&#x27;,&#x27;FXRP → modular lending on Flare&#x27;,&#x27;Flare reports live modular lending via Morpho and Mystic in February 2026.&#x27;,S.morpho]
 ]]];
-const symbols={live:&#x27;●&#x27;,announced:&#x27;◇&#x27;,listed:&#x27;○&#x27;,legacy:&#x27;×&#x27;};
-const names={live:&#x27;Reported available / operating&#x27;,announced:&#x27;Announced / pilot; full deployment not established&#x27;,listed:&#x27;Official ecosystem listing; deployment unverified&#x27;,legacy:&#x27;Legacy / transition / deprecated&#x27;};
+// Expanded discovery pass: directory presence and programme participation are not deployment evidence.
+const discovery={
+ grants:&#x27;https://xrplgrants.org/awardees&#x27;,
+ evm:&#x27;https://www.xrplevm.org/blog/xrpl-evm-is-live&#x27;,
+ tools:&#x27;https://xrpl.org/about/uses&#x27;,
+ payments:&#x27;https://ripple.com/ripple-press/ripple-redefines-payments-with-end-to-end-stablecoin-platform-and-global-customer-momentum/&#x27;,
+ customers:&#x27;https://ripple.com/customers/&#x27;,
+ uae:&#x27;https://ripple.com/ripple-press/zand-bank-and-mamo-newest-ripple-payments-customers-in-uae/&#x27;,
+ cards:&#x27;https://ripple.com/ripple-press/ripple-teams-up-with-mastercard-webbank-and-gemini/&#x27;,
+ tenity:&#x27;https://www.tenity.com/press-tenity-announces-9-game-changing-projects-as-part-of-xrpl-accelerator-cohort-6-bridging-web3-innovation-with-real-world-impact/&#x27;,
+ udax:&#x27;https://ripple.com/insights/ripple-and-uc-berkeley-launch-the-university-digital-asset-xcelerator-udax-to-supercharge-the-xrp-ecosystem/&#x27;,
+ hackathon:&#x27;https://hackathons.xrpl-commons.org/projects&#x27;
+};
+const add=(index,rows)=&gt;groups[index][2].push(...rows);
+add(3,[[&#x27;Soil / ORQO&#x27;,&#x27;live&#x27;,&#x27;RLUSD → RWA-backed yield on XRPL&#x27;,&#x27;Provider offers RLUSD yield backed by external credit strategies. Its native XRP vault is labelled launching soon; do not treat the two products as equally available.&#x27;,&#x27;https://xrpl.soil.co/&#x27;]]);
+add(4,[
+ [&#x27;Marsgate&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM → DEX&#x27;,&#x27;EVM team lists a concentrated-liquidity exchange. Current deployment requires verification.&#x27;,discovery.evm],
+ [&#x27;Vertex&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM directory → derivatives&#x27;,&#x27;Directory lists a cross-chain trading venue. Listing alone does not establish an operating XRPL EVM market.&#x27;,discovery.evm],
+ [&#x27;Fomo.biz&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM → launch platform&#x27;,&#x27;Listed token-launch and trading application; current deployment unverified.&#x27;,discovery.evm],
+ [&#x27;The Nexus Portal&#x27;,&#x27;listed&#x27;,&#x27;XRPL EVM → DeFi&#x27;,&#x27;Listed staking-oriented application; current deployment unverified.&#x27;,discovery.evm]
+]);
+add(6,[
+ ...[[&#x27;alfred&#x27;,&#x27;Stablecoin / fiat payments&#x27;],[&#x27;AltPayNet&#x27;,&#x27;Philippines outbound payments&#x27;],[&#x27;AMINA Bank&#x27;,&#x27;Institutional cross-border payments&#x27;],[&#x27;Banco Genial&#x27;,&#x27;Brazilian cross-border payouts&#x27;],[&#x27;Corpay&#x27;,&#x27;APAC funding with RLUSD&#x27;],[&#x27;ECIB&#x27;,&#x27;Malaysian institutional payments&#x27;],[&#x27;MassPay&#x27;,&#x27;Payout orchestration&#x27;]].map(([n,r])=&gt;[n,&#x27;live&#x27;,r+&#x27; → Ripple Payments&#x27;,&#x27;Named operating customer in Ripple’s March 2026 update. Chain-specific volumes are not established.&#x27;,discovery.payments]),
+ [&#x27;CambioReal&#x27;,&#x27;announced&#x27;,&#x27;Payment orchestration → Ripple settlement&#x27;,&#x27;March 2026 source describes integration in progress; completed rollout not verified.&#x27;,discovery.payments],
+ ...[&#x27;Zand Bank&#x27;,&#x27;Mamo&#x27;].map(n=&gt;[n,&#x27;announced&#x27;,&#x27;UAE payments → Ripple Payments&#x27;,&#x27;Named customer in May 2025 announcement; source uses future-tense implementation language.&#x27;,discovery.uae]),
+ ...[&#x27;Nium / Instarem&#x27;,&#x27;Modulr&#x27;,&#x27;Sentbe&#x27;,&#x27;SBI Remit&#x27;,&#x27;Travelex Bank&#x27;].map(n=&gt;[n,&#x27;listed&#x27;,&#x27;Cross-border payments → Ripple network&#x27;,&#x27;Featured in Ripple customer references. Current product version, settlement asset and chain require confirmation.&#x27;,discovery.customers]),
+ [&#x27;Mastercard&#x27;,&#x27;announced&#x27;,&#x27;Card settlement → RLUSD on XRPL&#x27;,&#x27;November 2025 collaboration with WebBank and Gemini; regulatory approval and implementation were pending.&#x27;,discovery.cards],
+ [&#x27;WebBank&#x27;,&#x27;announced&#x27;,&#x27;Gemini card issuer → RLUSD settlement&#x27;,&#x27;Bank participant in the Mastercard collaboration; not evidence of scaled production settlement.&#x27;,discovery.cards]
+]);
+add(8,[[&#x27;Rail&#x27;,&#x27;live&#x27;,&#x27;Virtual accounts / collections → Ripple Payments&#x27;,&#x27;Acquired capability incorporated into Ripple’s expanded payments offering.&#x27;,discovery.payments]]);
+add(10,[
+ [&#x27;Skip Go&#x27;,&#x27;live&#x27;,&#x27;Cosmos IBC ↔ XRPL EVM&#x27;,&#x27;Transfer interface identified by the EVM team. This is connectivity, not a separate native XRPL application.&#x27;,discovery.evm],
+ [&#x27;Gas.zip&#x27;,&#x27;live&#x27;,&#x27;Other chains → XRP gas on XRPL EVM&#x27;,&#x27;Gas funding service identified in the EVM guide.&#x27;,discovery.evm],
+ [&#x27;Range&#x27;,&#x27;live&#x27;,&#x27;XRPL EVM → analytics / security&#x27;,&#x27;Analytics service linked by the EVM team.&#x27;,discovery.evm],
+ [&#x27;Wormhole&#x27;,&#x27;live&#x27;,&#x27;XRPL EVM ↔ external chains&#x27;,&#x27;Official documentation states the EVM integration is live. Do not infer identical deployment on native XRPL.&#x27;,&#x27;https://docs.xrplevm.org/pages/users/introduction/what-is-the-xrplevm&#x27;],
+ ...[[&#x27;Bithomp&#x27;,&#x27;Explorer&#x27;],[&#x27;Cryptum&#x27;,&#x27;API / SDK&#x27;],[&#x27;GateHub&#x27;,&#x27;Issued-asset markets&#x27;],[&#x27;OnTheDex&#x27;,&#x27;Market data&#x27;],[&#x27;Towo Labs&#x27;,&#x27;Wallet infrastructure&#x27;],[&#x27;X-tokenize&#x27;,&#x27;Token tooling&#x27;],[&#x27;3ZY&#x27;,&#x27;Application tooling&#x27;],[&#x27;XRP Toolkit&#x27;,&#x27;Asset management / DEX&#x27;],[&#x27;XRPL Rosetta&#x27;,&#x27;Data visualization&#x27;],[&#x27;XRPL.org Ledger Explorer&#x27;,&#x27;Explorer&#x27;],[&#x27;XRPSCAN&#x27;,&#x27;Explorer / analytics&#x27;]].map(([n,r])=&gt;[n,&#x27;listed&#x27;,&#x27;XRPL → &#x27;+r,&#x27;Featured in the XRPL project directory; current service availability not independently tested.&#x27;,discovery.tools])
+]);
+groups.push([&#x27;XRPL grant discovery&#x27;,&#x27;Grant recipients · deployment and current activity unverified&#x27;,[
+ ...[[&#x27;Asseto&#x27;,&#x27;Yield&#x27;],[&#x27;C9 Tech&#x27;,&#x27;Payments&#x27;],[&#x27;PagCrypto&#x27;,&#x27;Payments&#x27;],[&#x27;Sonica&#x27;,&#x27;Tokenization&#x27;],[&#x27;T-Blocks&#x27;,&#x27;Real estate&#x27;],[&#x27;TokenOne&#x27;,&#x27;Credit&#x27;],[&#x27;Cointimes&#x27;,&#x27;Micropayments&#x27;],[&#x27;goBlockchain&#x27;,&#x27;Tokenization&#x27;],[&#x27;Bitbob&#x27;,&#x27;Payments&#x27;],[&#x27;Breezepay&#x27;,&#x27;Merchant payments&#x27;],[&#x27;Kodelab&#x27;,&#x27;Credit&#x27;],[&#x27;MC² Finance&#x27;,&#x27;Funds&#x27;],[&#x27;Propto&#x27;,&#x27;Real estate&#x27;],[&#x27;Tender Merchant&#x27;,&#x27;Payments&#x27;],[&#x27;VWBL&#x27;,&#x27;Access control&#x27;],[&#x27;ChatXRP&#x27;,&#x27;AI&#x27;],[&#x27;DeXfi&#x27;,&#x27;Trading&#x27;],[&#x27;EUA Carbon Token&#x27;,&#x27;Carbon&#x27;],[&#x27;EVM.Finance&#x27;,&#x27;Asset management&#x27;],[&#x27;FLUIDEFI InstiLink&#x27;,&#x27;Institutional DeFi&#x27;],[&#x27;VNX Stablecoins&#x27;,&#x27;Stablecoins&#x27;],[&#x27;Web3 Enabler / XRP for Salesforce&#x27;,&#x27;Payments&#x27;]].map(([n,r])=&gt;[n,&#x27;research&#x27;,r,&#x27;Grant-listed; validate deployment.&#x27;,discovery.grants])
+]]);
+groups.push([&#x27;Tenity accelerator discovery&#x27;,&#x27;Cohort 6 · programme participation is not mainnet proof&#x27;,[
+ ...[[&#x27;endl.io&#x27;,&#x27;Cross-border accounts&#x27;],[&#x27;Archway Finance&#x27;,&#x27;Payroll / invoices&#x27;],[&#x27;Effect Studios / Zynara&#x27;,&#x27;Freelance escrow&#x27;],[&#x27;Agrify&#x27;,&#x27;Supply-chain payments&#x27;],[&#x27;T54 Labs / tLedger&#x27;,&#x27;Agent payments&#x27;],[&#x27;Stablpay&#x27;,&#x27;Stablecoin payments&#x27;],[&#x27;Loula&#x27;,&#x27;Trade payments&#x27;],[&#x27;Fortstock&#x27;,&#x27;Warehouse-receipt finance&#x27;]].map(([n,r])=&gt;[n,&#x27;research&#x27;,&#x27;XRPL accelerator → &#x27;+r,&#x27;Named in Tenity’s June 2025 cohort. Production deployment and retention need follow-up.&#x27;,discovery.tenity])
+]]);
+groups.push([&#x27;UDAX startup discovery&#x27;,&#x27;Berkeley cohort · stage varies by project&#x27;,[
+ [&#x27;WaveTip&#x27;,&#x27;live&#x27;,&#x27;Twitch tipping → XRPL&#x27;,&#x27;Ripple reports a mainnet launch and Chrome extension release.&#x27;,discovery.udax],
+ ...[[&#x27;X-Card&#x27;,&#x27;Collectibles&#x27;],[&#x27;BlockBima&#x27;,&#x27;Climate insurance&#x27;],[&#x27;CRX Digital Assets&#x27;,&#x27;Tokenized credit&#x27;],[&#x27;Blockroll&#x27;,&#x27;Stablecoin cards&#x27;],[&#x27;WellArrive&#x27;,&#x27;Marketplace&#x27;],[&#x27;Spout&#x27;,&#x27;Equity tokenization&#x27;],[&#x27;EXFIL&#x27;,&#x27;Threat intelligence&#x27;],[&#x27;Mintara Labs&#x27;,&#x27;Deposit insurance&#x27;]].map(([n,r])=&gt;[n,&#x27;research&#x27;,&#x27;UDAX → &#x27;+r,&#x27;Named in Ripple’s January 2026 cohort report; exact production XRPL integration requires validation.&#x27;,discovery.udax])
+]]);
+groups.push([&#x27;Experimental applications&#x27;,&#x27;Hackathon prototypes · excluded from operating adoption claims&#x27;,[
+ ...[[&#x27;XRPL-BONDS&#x27;,&#x27;Bonds&#x27;],[&#x27;Agent Octopus&#x27;,&#x27;Energy payments&#x27;],[&#x27;PermiX&#x27;,&#x27;Permissioned trading&#x27;],[&#x27;XTrace&#x27;,&#x27;Compliance&#x27;],[&#x27;CryptoCars&#x27;,&#x27;Gaming&#x27;],[&#x27;MeltyFi&#x27;,&#x27;NFT credit&#x27;]].map(([n,r])=&gt;[n,&#x27;research&#x27;,&#x27;XRPL hackathon → &#x27;+r,&#x27;Prototype listed by XRPL Commons. Mainnet and commercial readiness not established.&#x27;,discovery.hackathon])
+]]);
+groups.push([&#x27;Adjacent networks &amp; access&#x27;,&#x27;Related ecosystems · not native XRPL deployments&#x27;,[
+ [&#x27;Evernode&#x27;,&#x27;listed&#x27;,&#x27;Adjacent smart-contract infrastructure&#x27;,&#x27;XRPL directory lists the project. Treat as adjacent infrastructure; validate its separate execution and settlement model before attribution.&#x27;,discovery.tools],
+ ...[&#x27;Cosmos Hub&#x27;,&#x27;Osmosis&#x27;,&#x27;Elys Network&#x27;,&#x27;Noble&#x27;,&#x27;Injective&#x27;].map(n=&gt;[n,&#x27;live&#x27;,&#x27;IBC connectivity ↔ XRPL EVM&#x27;,&#x27;EVM team reports an IBC connection. This does not mean all applications on this network integrate XRPL.&#x27;,discovery.evm])
+]]);
+const symbols={live:&#x27;●&#x27;,announced:&#x27;◇&#x27;,listed:&#x27;○&#x27;,legacy:&#x27;×&#x27;,research:&#x27;△&#x27;};
+const names={live:&#x27;Reported available / operating&#x27;,announced:&#x27;Announced / pilot; full deployment not established&#x27;,listed:&#x27;Official listing / reference; current deployment unverified&#x27;,legacy:&#x27;Legacy / transition / deprecated&#x27;,research:&#x27;Programme / prototype discovery; production unverified&#x27;};
+const totalEntries=groups.reduce((n,g)=&gt;n+g[2].length,0);
+root.querySelector(&#x27;#coverage-summary&#x27;).textContent=totalEntries+&#x27; entries across &#x27;+groups.length+&#x27; categories. Expanded research directory, not an exhaustive registry. Includes commercial customers, infrastructure and early-stage projects; grouped names and repeat organisations are not unique-company counts.&#x27;;
+const coverage=document.createElement(&#x27;details&#x27;);
+const coverageTitle=document.createElement(&#x27;summary&#x27;);coverageTitle.textContent=&#x27;Coverage, source directories and remaining gaps&#x27;;coverage.append(coverageTitle);
+const coverageText=document.createElement(&#x27;p&#x27;);coverageText.className=&#x27;text-small&#x27;;coverageText.textContent=&#x27;Checked: XRPL featured projects, selected grant recipients, EVM documentation and ecosystem guide, Ripple customer announcements, Tenity cohort 6, Berkeley UDAX and Commons hackathons. The grants directory lists 199 recipients; only a selected subset is included here. EVM directory listings, older cohorts, NFT/gaming projects, Xahau applications, regional issuers and private integrations still require further review. A listing, investment or cohort place does not prove a live integration.&#x27;;coverage.append(coverageText);
+for(const [label,url] of [[&#x27;XRPL projects&#x27;,discovery.tools],[&#x27;All grant recipients&#x27;,discovery.grants],[&#x27;EVM ecosystem directory&#x27;,&#x27;https://ecosystem.xrplevm.org/&#x27;],[&#x27;Commons incubator&#x27;,&#x27;https://www.xrpl-commons.org/the-aquarium&#x27;],[&#x27;Submit research / correction&#x27;,&#x27;https://github.com/abuqasar/ripple-ecosystem-dashboard/issues&#x27;]]){const a=document.createElement(&#x27;a&#x27;);a.href=url;a.target=&#x27;_blank&#x27;;a.rel=&#x27;noopener noreferrer&#x27;;a.textContent=label;a.style.marginRight=&#x27;16px&#x27;;coverage.append(a);}
+root.querySelector(&#x27;#coverage-summary&#x27;).after(coverage);
+root.querySelector(&#x27;#ripple-legend&#x27;).append(&#x27; · △ Programme / prototype discovery&#x27;);
 const buttons=[];
 // Metrics are dated research snapshots, not a live feed. Each entry: value, scope/date, source.
 // Keys correspond to transaction volume, active wallets, ecosystem market cap, and TVL.
@@ -1237,8 +1300,8 @@ const usageMetrics={
 };
 function addUsage(box,row){
  const category=groups.findIndex(g=&gt;g[2].includes(row));
- const indirect=[6,7,8,9,10].includes(category);
- const pending=row[1]===&#x27;announced&#x27;||row[1]===&#x27;listed&#x27;||row[1]===&#x27;legacy&#x27;;
+ const indirect=[6,7,8,9,10,16].includes(category);
+ const pending=row[1]!==&#x27;live&#x27;;
  const missing=[&#x27;Not verified&#x27;,pending?&#x27;Production usage not established; no verified figure in this research snapshot.&#x27;:&#x27;No verified figure for this integration in this research snapshot.&#x27;];
  const data={
   volume:[...missing],
@@ -1281,7 +1344,7 @@ for(const [label,sub,rows] of groups){
  rows.forEach(row=&gt;{const button=document.createElement(&#x27;button&#x27;);button.type=&#x27;button&#x27;;button.className=&#x27;btn viz-tile&#x27;;button.textContent=symbols[row[1]]+&#x27; &#x27;+row[0];button.setAttribute(&#x27;aria-label&#x27;,row[0]+&#x27;. &#x27;+names[row[1]]+&#x27;. &#x27;+row[2]);button.setAttribute(&#x27;aria-pressed&#x27;,&#x27;false&#x27;);button.addEventListener(&#x27;click&#x27;,()=&gt;select(row,button));buttons.push(button);grid.append(button);});
  lane.append(heading,grid);root.querySelector(&#x27;#ripple-lanes&#x27;).append(lane);
 }
-select(groups[1][2][0],buttons[7]);
+select(groups[1][2][0],buttons.find(b=&gt;b.textContent.endsWith(&#x27;Ondo / OUSG&#x27;)));
 })();
 &lt;/script&gt;
 
